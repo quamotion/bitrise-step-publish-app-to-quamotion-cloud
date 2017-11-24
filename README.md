@@ -51,7 +51,7 @@ If you want to use your step in your project's `bitrise.yml`:
 2. reference it in your `bitrise.yml` with the `git::PUBLIC-GIT-CLONE-URL@BRANCH` step reference style:
 
 ```
-- git::https://github.com/quamotion/bitrise-step-publish-app-to-quamotion-cloud@master
+- git::https://github.com/quamotion/bitrise-step-publish-app-to-quamotion-cloud@master:
    title: Publish app to Quamotion Cloud
    inputs:
    - app_path: "$BITRISE_APK_PATH"
