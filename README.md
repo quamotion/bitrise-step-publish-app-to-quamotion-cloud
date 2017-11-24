@@ -52,7 +52,7 @@ If you want to use your step in your project's `bitrise.yml`:
 
 ```
 - git::https://github.com/quamotion/bitrise-step-publish-app-to-quamotion-cloud@master
-   title: My step
+   title: Publish app to Quamotion Cloud
    inputs:
    - app_path: "$BITRISE_APK_PATH"
    - quamotion_api_key: "YOUR-API-KEY"
