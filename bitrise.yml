@@ -4,12 +4,7 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 app:
   envs:
   # An example secret param, define it (A_SECRET_PARAM) in .bitrise.secrets.yml
-  - app_path: "$BITRISE_APK_PATH"
-    opts:
-      title: "Path to the Android or iOS application you want to publish"
-  - quamotion_api_key: $QUAMOTION_API_KEY
-    opts:
-      title: "The API key to use when connecting to your Quamotion Cloud project"
+  - A_SECRET_PARAM: $A_SECRET_PARAM
   # If you want to share this step into a StepLib
   - BITRISE_STEP_ID: publish-app-to-quamotion-cloud
   - BITRISE_STEP_VERSION: "0.0.1"
@@ -23,13 +18,8 @@ workflows:
         inputs:
         - content: |
             #!/bin/bash
-            QUAMOTION_ACCESS_TOKEN=`curl -s -d "apiKey=$quamotion_api_key" https://cloud.quamotion.mobi/api/login | jq -r '.access_token'`
-            QUAMOTION_RELATIVE_URL=`curl -s -H "Authorization: Bearer $QUAMOTION_ACCESS_TOKEN" https://cloud.quamotion.mobi/api/project | jq -r '.[0].relativeUrl'`
-            echo "Connected to the Quamotion project at https://quamotion.mobi/$QUAMOTION_RELATIVE_URL"
-
-            echo "Uploading $APK_PATH"
-            curl -s -H "Authorization: Bearer $QUAMOTION_ACCESS_TOKEN" -F files=@$app_path https://cloud.quamotion.mobi${QUAMOTION_RELATIVE_URL}api/app
-            echo "Successfully uploaded $APK_PATH"
+            echo "Just an example 'secrets' print."
+            echo "The value of 'A_SECRET_PARAM' is: $A_SECRET_PARAM"
 
   # ----------------------------------------------------------------
   # --- workflows to Share this step into a Step Library
