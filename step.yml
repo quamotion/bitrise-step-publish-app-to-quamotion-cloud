@@ -86,11 +86,21 @@ inputs:
       value_options: []
 
 outputs:
-  - EXAMPLE_STEP_OUTPUT:
+  - APP_ID:
     opts:
-      title: "Example Step Output"
-      summary: Summary. No more than 2-3 sentences.
+      title: "Application ID"
+      summary: The application ID for the app that has been uploaded to Quamotion Cloud
       description: |
-        Description of this output.
-
-        Can be Markdown formatted text.
+        The application ID for the app that has been uploaded to Quamotion Cloud
+  - APP_VERSION:
+    opts:
+      title: "Application Version"
+      summary: The application version of the app that has been uploaded to Quamotion Cloud
+      description: |
+        The application version of the app that has been uploaded to Quamotion Cloud
+  - APP_ID:
+    opts:
+      title: "Application Target OS"
+      summary: The target operating system for the app that has been uploaded to Quamotion Cloud
+      description: |
+        The target operating system for the app that has been uploaded to Quamotion Cloud

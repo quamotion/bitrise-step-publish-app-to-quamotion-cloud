@@ -6,11 +6,14 @@ QUAMOTION_ACCESS_TOKEN=`curl -s -d "apiKey=$quamotion_api_key" https://cloud.qua
 QUAMOTION_RELATIVE_URL=`curl -s -H "Authorization: Bearer $QUAMOTION_ACCESS_TOKEN" https://cloud.quamotion.mobi/api/project | jq -r '.[0].relativeUrl'`
 echo "Connected to the Quamotion project at https://quamotion.mobi/$QUAMOTION_RELATIVE_URL"
 
-echo "Uploading $APK_PATH"
-curl -s -H "Authorization: Bearer $QUAMOTION_ACCESS_TOKEN" -F files=@$app_path https://cloud.quamotion.mobi${QUAMOTION_RELATIVE_URL}api/app
-echo "Successfully uploaded $APK_PATH"
+echo "Uploading $app_path"
+QUAMOTION_APP=`curl -s -H "Authorization: Bearer $QUAMOTION_ACCESS_TOKEN" -F files=@$app_path https://cloud.quamotion.mobi${QUAMOTION_RELATIVE_URL}api/app`
 
-exit 0
+APP_ID=`echo $QUAMOTION_APP | jq -r '.appId'`
+APP_VERSION=`echo $QUAMOTION_APP | jq -r '.version'`
+APP_OS=`echo $QUAMOTION_APP | jq -r '.operatingSystem'`
+
+echo "Uploaded app $app_path as $APP_ID $APP_VERSION for $APP_OS to Quamotion Cloud"
 
 #
 # --- Export Environment Variables for other Steps:
@@ -24,8 +27,14 @@ exit 0
 # You can find more usage examples on envman's GitHub page
 #  at: https://github.com/bitrise-io/envman
 
+envman add --key APP_ID --value $APP_ID
+envman add --key APP_VERSION --value $APP_VERSION
+envman add --key APP_OS --value $APP_OS
+
 #
 # --- Exit codes:
 # The exit code of your Step is very important. If you return
 # with a 0 exit code `bitrise` will register your Step as "successful".
 # Any non zero exit code will be registered as "failed" by `bitrise`.
+
+exit 0
