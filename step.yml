@@ -53,25 +53,29 @@ deps:
   brew:
   - name: git
   - name: wget
+  - name: jq
   apt_get:
   - name: git
   - name: wget
-
-
-toolkit:
-  bash:
-    entry_file: step.sh
-
+  - name: jq
 
 inputs:
-  - example_step_input: Default Value - you can leave this empty if you want to
+  - app_path: $BITRISE_APK_PATH
     opts:
-      title: "Example Step Input"
-      summary: Summary. No more than 2-3 sentences.
+      title: "Application to publish"
+      summary: Summary. Provide the path to the Android or iOS application you want to publish
       description: |
-        Description of this input.
-
-        Can be Markdown formatted text.
+        Provide the path to the Android or iOS application you want to publish. By default,
+        this value is set to `$BITRISE_APK_PATH`.
+      is_expand: true
+      is_required: true
+      value_options: []
+  - quamotion_api_key: Your Quamotion API Key
+    opts:
+      title: "Quamotion API Key"
+      summary: The Quamotion API key to authenticate you with Quamotion.
+      description: |
+        See your Quamotion Cloud project for more information on how to create API keys.
       is_expand: true
       is_required: true
       value_options: []
