@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 set -ex
 
 echo "Logging in to Quamotion Cloud"
@@ -9,9 +9,9 @@ echo "Connected to the Quamotion project at https://quamotion.mobi/$QUAMOTION_RE
 echo "Uploading $app_path"
 QUAMOTION_APP=`curl -s -H "Authorization: Bearer $QUAMOTION_ACCESS_TOKEN" -F files=@$app_path https://cloud.quamotion.mobi${QUAMOTION_RELATIVE_URL}api/app`
 
-APP_ID=`echo $QUAMOTION_APP | jq -r '.appId'`
-APP_VERSION=`echo $QUAMOTION_APP | jq -r '.version'`
-APP_OS=`echo $QUAMOTION_APP | jq -r '.operatingSystem'`
+APP_ID=`echo $QUAMOTION_APP | jq -r '.[0]/appId'`
+APP_VERSION=`echo $QUAMOTION_APP | jq -r '.[0]/version'`
+APP_OS=`echo $QUAMOTION_APP | jq -r '.[0]/operatingSystem'`
 
 echo "Uploaded app $app_path as $APP_ID $APP_VERSION for $APP_OS to Quamotion Cloud"
 
