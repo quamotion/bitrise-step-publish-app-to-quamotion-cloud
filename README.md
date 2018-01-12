@@ -15,6 +15,17 @@ This step takes two parameters:
 - Your Quamotion API key
 - The path to the app you want to publish
 
+## See also
+
+This step is part of a series of Bitrise steps which integrate Quamotion Cloud with Bitrise.
+
+* Use the [Publish app to Quamotion Cloud](https://github.com/quamotion/bitrise-step-publish-app-to-quamotion-cloud) step
+  to publish your iOS or Android app to [Quamotion Cloud](https://cloud.quamotion.mobi).
+* Use the [Publish test package to Quamotion Cloud](https://github.com/quamotion/bitrise-step-publish-test-package-to-quamotion-cloud/)
+  step to publish your Maven or Pester tests to [Quamotion Cloud](https://cloud.quamotion.mobi).
+* Use the [Start Mobile UI Test in Quamotion Cloud](https://github.com/quamotion/bitrise-step-start-mobile-ui-test-in-quamotion-cloud)
+  step to test your iOS or Android app in [Quamotion Cloud](https://cloud.quamotion.mobi).
+
 ## Adding this step to your Bitrise workflow
 To use this step, follow these steps:
 
