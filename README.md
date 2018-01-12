@@ -1,9 +1,21 @@
 # Publish app to Quamotion Cloud
 
-You can use this Bitrise step to publish  an Android or iOS app to Quamotion Cloud.
+You can use this Bitrise step to publish  an Android or iOS app to [Quamotion Cloud](https://cloud.quamotion.mobi).
 You can then use the Quamotion Cloud to test your iOS and Android apps.
 
-## How to use this Step
+## What this step does
+
+This step publishes an Android or iOS app you've built with Bitrise to [Quamotion Cloud](https://cloud.quamotion.mobi).
+
+Once you've published your app to Quamotion Cloud, you can test your app on various Android and iOS devices hosted by Quamotion.
+
+![Publish app to Quamotion Cloud](bitrise_publish_app_to_quamotion.png)
+
+This step takes two parameters:
+- Your Quamotion API key
+- The path to the app you want to publish
+
+## Adding this step to your Bitrise workflow
 To use this step, follow these steps:
 
 1. Open your workflow in Bitrise
@@ -18,4 +30,5 @@ To use this step, follow these steps:
     - app_path: $BITRISE_APK_PATH
 ```
 
-4. Save your workflow by clicking __Save__
+4. Save your workflow by clicking __CTRL + S__
+
